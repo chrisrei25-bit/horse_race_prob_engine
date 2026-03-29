@@ -1,10 +1,4 @@
-# training.yaml
-# Model training configuration.
-# To be populated in Phase 1 when modeling modules are implemented.
-# Walk-forward validation is required — no random splits on temporal data.
-
 training:
-  # Placeholder — do not add training logic until Phase 1
-    validation_strategy: walk_forward
-      model: null
-      
+  validation_strategy: walk_forward
+  calibration_enabled: true
+  normalize_within_race: true
