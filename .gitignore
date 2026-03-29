@@ -1,47 +1,23 @@
-# Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
-*.egg
-*.egg-info/
-dist/
-build/
-*.whl
-
-# Virtual environments
+.Python
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .venv/
 venv/
 env/
-
-# Environment secrets
-.env
-
-# Data (keep .gitkeep files, ignore actual data files)
-data/raw/*
-data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-
-# Notebooks checkpoints
-.ipynb_checkpoints/
-
-# Editor
-.vscode/
-.idea/
-*.swp
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Testing and coverage
-.pytest_cache/
+ENV/
+dist/
+build/
+*.egg-info/
 .coverage
 htmlcov/
-
-# Type checking
-.mypy_cache/
-
-# Ruff
-.ruff_cache/
+.ipynb_checkpoints/
+.env
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
