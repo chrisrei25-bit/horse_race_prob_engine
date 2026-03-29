@@ -1,0 +1,20 @@
+# base.yaml
+# Top-level project configuration. Override with environment variables where noted.
+
+project:
+  name: horse_race_prob_engine
+    version: "0.0.1"
+
+    paths:
+      raw_data_dir: data/raw
+        processed_data_dir: data/processed
+          logs_dir: logs
+
+          logging:
+            level: INFO  # Override with LOG_LEVEL env var
+
+            # Placeholder sections — to be populated in later phases
+            data: {}
+            features: {}
+            modeling: {}
+            
