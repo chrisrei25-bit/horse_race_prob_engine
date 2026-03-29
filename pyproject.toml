@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "horse_race_prob_engine"
+version = "0.0.1"
+description = "Production-grade horse race win probability engine"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.0",
+        "pyyaml>=6.0",
+            "numpy>=1.26",
+                "pandas>=2.1",
+                    "scikit-learn>=1.4",
+                    ]
+
+                    [project.optional-dependencies]
+                    dev = [
+                        "pytest>=8.0",
+                            "pytest-cov>=5.0",
+                                "ruff>=0.4",
+                                    "mypy>=1.9",
+                                    ]
+
+                                    [tool.setuptools.packages.find]
+                                    where = ["src"]
+
+                                    [tool.ruff]
+                                    line-length = 100
+                                    target-version = "py311"
+
+                                    [tool.mypy]
+                                    python_version = "3.11"
+                                    strict = false
+                                    ignore_missing_imports = true
+
+                                    [tool.pytest.ini_options]
+                                    testpaths = ["tests"]
+                                    
