@@ -1,39 +1,18 @@
 # horse_race_prob_engine
 
-Phase 0 scaffold — structure and configuration only.
+Phase 0 repository scaffold for a production-grade horse race probability engine.
 
-## Purpose
+Current status:
+- repository structure initialized
+- configuration placeholders added
+- package layout initialized
+- scoped agent instructions added
 
-A production-grade horse race win probability engine.
-The system estimates calibrated pre-race win probabilities for each horse in a race.
-
-## Status
-
-Phase 0: Repository scaffold created. No model code exists yet.
-
-## Structure
-
-```
-horse_race_prob_engine/
-  configs/        # YAML configuration files
-    data/           # Raw and processed data directories (empty)
-      notebooks/      # Exploratory analysis notebooks
-        src/            # Source code (src layout)
-          tests/          # Test suite
-          ```
-
-          ## Requirements
-
-          - Python 3.11+
-
-          ## Setup
-
-          ```bash
-          pip install -e ".[dev]"
-          ```
-
-          ## Notes
-
-          - Do not add model code until Phase 1 is explicitly started.
-          - See AGENTS.md for operating rules and architectural constraints.
-          
+Not yet implemented:
+- ingestion
+- feature engineering
+- modeling
+- calibration
+- backtesting
+- CLI
+- tests beyond scaffold
