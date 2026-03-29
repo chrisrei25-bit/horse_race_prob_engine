@@ -1,27 +1,55 @@
-# src/AGENTS.md
+# AGENTS.md
 
 ## Scope
+This file governs everything under src/.
 
-Rules for all code within the src/ directory.
+## Code rules
+- Write production-oriented Python, not notebook-style code.
+- Keep functions small and single-purpose.
+- Avoid hidden side effects.
+- Prefer pure functions unless state is required.
+- Use explicit inputs and outputs.
+- Avoid global mutable state.
+- Do not bury business logic inside CLI code.
+- Do not mix feature engineering with model training in the same file.
+- Do not mix schema definitions with runtime prediction logic.
 
-## Additional constraints for src/
+## Architecture rules
+Preserve these boundaries:
+- config.py for configuration loading and validation
+- schemas.py for canonical data schema definitions
+- logging_config.py for logging setup only
+- utils/ for generic reusable helpers
+- data/ for ingestion, mapping, preprocessing
+- features/ for leakage-safe feature generation
+- modeling/ for dataset building, training, prediction, calibration, evaluation, backtesting, explainability
+- api/ for CLI and thin orchestration only
 
-- Use the src layout: all importable code lives under src/horse_race_prob_engine/
-- All modules must be importable without side effects
-- Do not place scripts, notebooks, or data files inside src/
-- Each subpackage (data, features, modeling, api, utils) has a single responsibility
-- Keep __init__.py files minimal — only re-export what is explicitly needed
-- Do not import between sibling subpackages except through clearly defined interfaces
-- Type annotations are required on all public function signatures
-- No hardcoded paths — use config objects loaded from configs/
+## Modeling rules
+- Every feature must be justifiable as available before post time
+- Every rolling feature must be backward-looking
+- Every race-aware calculation must preserve race grouping
+- Probability outputs must sum sensibly within a race
+- Calibration must not be skipped once prediction code exists
+- Do not present ranking scores as calibrated probabilities unless calibration is actually performed
 
-## Subpackage responsibilities
+## Dependency rules
+- Prefer standard library where practical
+- Prefer pydantic, pandas, numpy, scikit-learn, pyyaml, typer, pytest
+- Do not add heavyweight frameworks unless explicitly requested
+- Do not add deep learning libraries in early phases unless specifically requested
 
-- horse_race_prob_engine/config.py — load and validate YAML configs
-- horse_race_prob_engine/schemas.py — Pydantic data models for races, runners, features
-- horse_race_prob_engine/logging_config.py — configure logging for the library
-- horse_race_prob_engine/utils/ — shared utilities (no domain logic)
-- horse_race_prob_engine/data/ — ingestion and I/O only, no feature logic
-- horse_race_prob_engine/features/ — feature engineering, strictly no I/O or modeling
-- horse_race_prob_engine/modeling/ — model training, calibration, prediction
-- horse_race_prob_engine/api/ — CLI or internal API surface only
+## Implementation discipline
+When adding new code:
+- update imports cleanly
+- avoid dead code
+- avoid commented-out blocks
+- avoid TODO clutter
+- do not leave fake stub returns except where explicitly marked and documented
+
+## Documentation inside code
+For any non-trivial function, document:
+- purpose
+- inputs
+- outputs
+- leakage or temporal assumptions if relevant
