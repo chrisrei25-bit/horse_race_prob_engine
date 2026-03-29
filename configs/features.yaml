@@ -1,0 +1,9 @@
+# features.yaml
+# Feature engineering configuration.
+# To be populated in Phase 1 when feature modules are implemented.
+# All features defined here must be strictly backward-looking (no leakage).
+
+features:
+  # Placeholder — do not add feature logic until Phase 1
+    enabled: []
+    
