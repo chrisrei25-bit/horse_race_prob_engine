@@ -1,20 +1,30 @@
-# tests/AGENTS.md
+# AGENTS.md
 
 ## Scope
+This file governs everything under tests/.
 
-Rules for all code within the tests/ directory.
+## Testing rules
+- Tests must validate behavior, not implementation trivia.
+- Prefer deterministic tests.
+- Avoid flaky time-based or network-based tests.
+- Do not rely on external APIs.
+- Do not rely on live racing data.
+- Use small synthetic fixtures where possible.
 
-## Test constraints
+## Priority coverage
+When relevant code exists, prioritize tests for:
+- schema validation
+- missing-column handling
+- backward-looking feature generation
+- temporal split correctness
+- race-level probability normalization
+- prediction output shape
+- calibration behavior
+- leakage prevention
 
-- Tests must not import from outside src/horse_race_prob_engine/ except standard library and dev dependencies
-- Do not test implementation details — test observable behavior and contracts
-- Do not use random train/test splits in any test involving temporal data
-- Do not hardcode expected values derived from post-race information
-- Each test file should correspond to a module in src/horse_race_prob_engine/
-- Use pytest fixtures for shared setup; do not use setUp/tearDown (unittest style)
-- Tests must be runnable with: pytest tests/
-
-## Phase 0 state
-
-No tests exist yet. The tests/ directory is scaffolded only.
-Tests will be added in Phase 1 alongside each implemented module.
+## Test design rules
+- One test should verify one core behavior.
+- Use clear names.
+- Keep fixtures small and readable.
+- Fail loudly on leakage or future-data usage.
+- Prefer explicit assertions over snapshot noise.
